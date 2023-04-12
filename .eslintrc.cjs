@@ -17,6 +17,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'import/no-unresolved': 'off',
+    'import/extensions': 'off',
     semi: ['error', 'never'],
     'max-len': ['warn', { code: 120 }],
     'import/prefer-default-export': 'off',
