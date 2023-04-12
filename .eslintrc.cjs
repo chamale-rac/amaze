@@ -16,6 +16,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'import/no-unresolved': 'off',
     semi: ['error', 'never'],
     'max-len': ['warn', { code: 120 }],
     'import/prefer-default-export': 'off',
@@ -28,5 +29,9 @@ module.exports = {
         bundledDependencies: true,
       },
     ],
+  },
+  // TODO remove this temporal fix for import/no-extraneous-dependencies error on main.jsx
+  settings: {
+    'import/core-modules': ['react-router-dom'],
   },
 }
