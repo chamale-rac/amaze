@@ -1,3 +1,18 @@
-.container div {
+.container .title {
     font-family: 'Cartoon Queen', sans-serif;
+}
+
+.container form input {
+    outline: none;
+}
+
+.container form input::-webkit-outer-spin-button,
+.container form input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.container form input[type=number] {
+    -moz-appearance: textfield;
 }
