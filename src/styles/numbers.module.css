@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 69vh;
+    width: 90px;
+    border-style: dashed dashed none dashed;
+}
+
+.container .title {
+    font-size: 20px;
+    font-family: 'El Glance', sans-serif;
+    text-decoration: underline overline;
+    line-height: 1.5;
+}
+
+.wrapper {
+    overflow-y: scroll;
+    font-size: 10px;
+}
+
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.wrapper {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    border-style: dashed dashed none dashed;
+}
+
+.number:hover {
+    background-color: black;
+    color: white;
+    height: 40px;
+    user-select: none;
+}
+
+.arrows {
+    font-family: 'Nature Boho', sans-serif;
+    font-size: 40px;
+    line-height: 0.8;
+    border-style: dashed dashed none none;
+}
+
+.selected {
+    font-family: 'Groothe', sans-serif;
+    width: 80%;
+    font-size: 38px;
+    line-height: 0.0;
+    background-color: white;
+    border-style: none none none none;
+}

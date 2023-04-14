@@ -2,6 +2,11 @@
     font-family: 'Cartoon Queen', sans-serif;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .container form input {
     outline: none;
 }
@@ -15,4 +20,52 @@
 /* Firefox */
 .container form input[type=number] {
     -moz-appearance: textfield;
+}
+
+.container .label {
+    cursor: pointer;
+    font-family: 'BLACKING', sans-serif;
+    line-height: 1.1;
+}
+
+.check {
+    cursor: pointer;
+    color: black;
+
+
+    vertical-align: middle;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align: center;
+    width: 13px;
+    height: 13px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    -webkit-appearance: none;
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    outline: 0;
+}
+
+.check:checked,
+.check:checked:hover {
+    background-color: black;
+    color: #fff !important;
+}
+
+.check:hover {
+    background-color: black;
+}
+
+.check:checked:after {
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #99a1a7;
 }

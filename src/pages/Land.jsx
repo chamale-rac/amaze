@@ -1,5 +1,5 @@
 import React from 'react'
-import * as styles from '@styles/main.module.css'
+import * as styles from '@styles/land.module.css'
 
 import Multiplier from '@components/Multiplier'
 import Form from '../components/Form'

@@ -1,18 +1,26 @@
 import React from 'react'
 import * as styles from '@styles/form.module.css'
 
+import Numbers from './Numbers'
+import Pill from './Pill'
+import Input from './Input'
+
 function Form() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Configs</div>
-      <form>
-        <label>Width:</label>
-        <input type="number" id="w_number" name="w_number" min="4" max="100" />
-        <label>Height:</label>
-        <input type="number" id="h_number" name="h_number" min="4" max="100" />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
+      <div className={styles.wrapper}>
+        <Numbers min={4} max={100} header="Width" />
+        <Numbers min={4} max={100} header="Height" />
+        <div>
+          <Pill header="skin" options={['sk1', 'sk2', 'sk3']} />
+          <label className={styles.label}>
+            tempo?
+            <input className={styles.check} type="checkbox" value="tempo" />
+          </label>
+          <Input header="seconds" />
+        </div>
+      </div>
     </div>
   )
 }

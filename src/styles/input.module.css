@@ -1,0 +1,21 @@
+.container input {
+    outline: none;
+}
+
+.container label {
+    user-select: none;
+    font-size: 25px;
+}
+
+.container input::-webkit-outer-spin-button,
+.container input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.container input[type=number] {
+    -moz-appearance: textfield;
+    width: 50px;
+    font-family: 'Digital Numbers', sans-serif;
+}
