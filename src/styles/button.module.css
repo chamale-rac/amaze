@@ -1,0 +1,37 @@
+.container {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+
+.container div {
+    position: absolute;
+    font-family: 'Pixel Gaming', sans-serif;
+    font-size: 65px;
+    transform-origin: 100% 100%;
+    transform: rotate(-95deg);
+    border-style: none;
+    transition: background-color 70ms ease-in-out,
+        color 70ms ease-out;
+}
+
+.container div::after {
+    content: 'the game';
+}
+
+.container div::before {
+    content: 'Play';
+}
+
+.container div:hover {
+    background-color: black;
+    color: white;
+}
+
+.container div:hover::after {
+    content: 'play';
+}
+
+.container div:hover::before {
+    content: 'The game';
+}

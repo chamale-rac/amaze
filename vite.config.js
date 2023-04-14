@@ -24,6 +24,10 @@ export default defineConfig({
         find: '@routes',
         replacement: path.resolve(__dirname, 'src/routes'),
       },
+      {
+        find: '@styles',
+        replacement: path.resolve(__dirname, 'src/styles'),
+      },
     ],
   },
 })

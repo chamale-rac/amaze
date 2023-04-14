@@ -1,0 +1,23 @@
+.row {
+    display: flex;
+    align-items: end
+}
+
+.char {
+    font-family: 'GlukFrames07', sans-serif;
+    border-radius: 10%;
+    user-select: none;
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    color: black;
+    transition: transform 0.1s ease-in-out,
+        border-radius 0.2s ease-out;
+}
+
+
+.char:hover {
+    border-radius: 50%;
+    transform: rotate(90deg);
+    transition-delay: 2ms;
+}

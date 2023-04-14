@@ -1,0 +1,68 @@
+@import url('https://fonts.cdnfonts.com/css/sticky-memos');
+@import url('https://fonts.cdnfonts.com/css/cartoon-queen');
+@import url('https://fonts.cdnfonts.com/css/nature-boho');
+@import url('https://fonts.cdnfonts.com/css/glukframes07');
+@import url('https://fonts.cdnfonts.com/css/smile-power-personal-use');
+@import url('https://fonts.cdnfonts.com/css/blacking');
+@import url('https://fonts.cdnfonts.com/css/narlesh-plasttic');
+@import url('https://fonts.cdnfonts.com/css/groothe');
+@import url('https://fonts.cdnfonts.com/css/pixel-gaming');
+/* gg:
+font-family: 'Pixel Gaming', sans-serif;
+*/
+/* 3d dummy:
+font-family: 'Cartoon Queen', sans-serif;
+*/
+/* with post
+font-family: 'Sticky Memos', sans-serif
+*/
+/* japanese:
+font-family: 'Nature Boho',sans-serif;
+*/
+/* flowers:
+font-family: 'GlukFrames07', sans-serif;
+*/
+/* undulated:
+font-family: 'Smile Power Personal Use',sans-serif;
+*/
+/* ss:
+font-family: 'BLACKING', sans-serif;
+*/
+/* plastic:
+font-family: 'Narlesh Plasttic', sans-serif;
+*/
+/* plastic big:
+font-family: 'Groothe', sans-serif;
+*/
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    border-style: dashed dashed dashed dashed;
+    border-width: 1px;
+    border-color: black;
+}
+
+/* Color Theme Swatches in Hex */
+.violet-feathers-1-hex {
+    color: #8D41BF;
+}
+
+.violet-feathers-2-hex {
+    color: #67308C;
+}
+
+.violet-feathers-3-hex {
+    color: #421E59;
+}
+
+.violet-feathers-4-hex {
+    color: #1C0D26;
+}
+
+.violet-feathers-5-hex {
+    color: #C09CD9;
+}
