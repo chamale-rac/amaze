@@ -7,8 +7,8 @@ function Input({ header }) {
   return (
     <div className={styles.container}>
       <label>
-        {`${header}===`}
-        <input type="number" />
+        {`${header}=`}
+        <input type="number" min={20} />
       </label>
     </div>
   )

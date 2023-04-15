@@ -39,8 +39,20 @@
 .number:hover {
     background-color: black;
     color: white;
-    height: 40px;
     user-select: none;
+}
+
+.selected {
+    background-color: black;
+    color: white;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.wrapper:hover .selected {
+    height: fit-content;
+    background-color: white;
+    color: black;
 }
 
 .arrows {
@@ -50,11 +62,11 @@
     border-style: dashed dashed none none;
 }
 
-.selected {
+.actual {
     font-family: 'Groothe', sans-serif;
     width: 80%;
     font-size: 38px;
-    line-height: 0.0;
+    line-height: 0.4;
     background-color: white;
     border-style: none none none none;
 }

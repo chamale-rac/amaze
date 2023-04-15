@@ -44,6 +44,10 @@ font-family: 'Digital Numbers',sans-serif;
 font-family: 'El Glance', sans-serif;
 */
 
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
 
 *,
 *::before,

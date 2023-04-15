@@ -4,7 +4,9 @@
     height: 40px;
 }
 
-.container div {
+.container .button {
+    color: black;
+    text-decoration: none;
     position: absolute;
     font-family: 'Pixel Gaming', sans-serif;
     font-size: 67px;
@@ -15,23 +17,23 @@
         color 70ms ease-out;
 }
 
-.container div::after {
+.container .button::after {
     content: 'the game';
 }
 
-.container div::before {
+.container .button::before {
     content: 'Play';
 }
 
-.container div:hover {
+.container .button:hover {
     background-color: black;
     color: white;
 }
 
-.container div:hover::after {
+.container .button:hover::after {
     content: 'play';
 }
 
-.container div:hover::before {
+.container .button:hover::before {
     content: 'The game';
 }

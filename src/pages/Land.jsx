@@ -4,6 +4,7 @@ import * as styles from '@styles/land.module.css'
 import Multiplier from '@components/Multiplier'
 import Form from '../components/Form'
 import Button from '../components/Button'
+import Draggable from '../components/Draggable'
 
 function Land() {
   return (
@@ -23,7 +24,9 @@ function Land() {
         </div>
       </div>
       <div className={styles.col}>
-        <Button />
+        <Draggable>
+          <Button to="/play" />
+        </Draggable>
       </div>
       <div className={styles.col}>
         <Form />

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as styles from '@styles/form.module.css'
+
+import { AppContext } from '@context/AppContext'
 
 import Numbers from './Numbers'
 import Pill from './Pill'
 import Input from './Input'
 
 function Form() {
+  const { globalTime, time } = useContext(AppContext)
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>Configs</div>
@@ -13,12 +17,17 @@ function Form() {
         <Numbers min={4} max={100} header="Width" />
         <Numbers min={4} max={100} header="Height" />
         <div>
-          <Pill header="skin" options={['sk1', 'sk2', 'sk3']} />
+          <Pill header="skin" options={['β', 'Ψ', 'λ']} />
           <label className={styles.label}>
-            tempo?
-            <input className={styles.check} type="checkbox" value="tempo" />
+            time?
+            <input
+              className={styles.check}
+              type="checkbox"
+              checked={time}
+              onChange={(e) => globalTime(e.target.checked)}
+            />
           </label>
-          <Input header="seconds" />
+          {time && <Input header="secs" />}
         </div>
       </div>
     </div>

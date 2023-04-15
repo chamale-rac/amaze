@@ -5,6 +5,9 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Land from '@pages/Land'
+import Game from '@pages/Game'
+import { AppProvider } from '@context/AppContext'
+
 import ErrorPage from '@/error-page'
 
 const router = createBrowserRouter([
@@ -13,10 +16,13 @@ const router = createBrowserRouter([
     element: <Land />,
     errorElement: <ErrorPage />,
   },
+  { path: '/play', element: <Game />, errorElement: <ErrorPage /> },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>,
 )

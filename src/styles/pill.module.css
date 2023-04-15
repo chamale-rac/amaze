@@ -1,8 +1,22 @@
 .container {
-    font-family: 'Groothe', sans-serif;
+    font-family: 'BLACKING', sans-serif;
 }
 
 .container span {
     font-size: 20px;
     font-family: 'El Glance', sans-serif;
+}
+
+.header {
+    user-select: none;
+}
+
+.option {
+    user-select: none;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: black;
+    color: white;
 }
