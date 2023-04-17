@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Land from '@pages/Land'
 import Game from '@pages/Game'
+import Maze from '@pages/Maze'
+
 import { AppProvider } from '@context/AppContext'
 
 import ErrorPage from '@/error-page'
@@ -17,6 +19,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   { path: '/play', element: <Game />, errorElement: <ErrorPage /> },
+  {
+    path: '/experimental',
+    element: <Maze />,
+    errorElement: <ErrorPage />,
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
