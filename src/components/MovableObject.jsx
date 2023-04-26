@@ -10,6 +10,10 @@ function MovableObject({ collisionObjects = [] }) {
   const mesh = useRef()
   const velocity = useRef([0, 0])
 
+  const targetRotation = useRef({ x: 0, y: 0, z: 0 })
+
+  // Smoothly update the rotation of the mesh
+
   useFrame(() => {
     // Update the position of the mesh based on the current velocity
     mesh.current.position.x += velocity.current[0]
@@ -18,6 +22,10 @@ function MovableObject({ collisionObjects = [] }) {
     // Dampen the velocity over time to create a smoother movement
     velocity.current[0] *= 0.9
     velocity.current[1] *= 0.9
+
+    // Update the rotation of the mesh
+    mesh.current.rotation.y +=
+      (targetRotation.current.y - mesh.current.rotation.y) * 0.1
   })
 
   useEffect(() => {
@@ -25,15 +33,19 @@ function MovableObject({ collisionObjects = [] }) {
       switch (event.key) {
         case 'ArrowUp':
           velocity.current[1] += 0.1
+          targetRotation.current.y = 0
           break
         case 'ArrowDown':
           velocity.current[1] -= 0.1
+          targetRotation.current.y = Math.PI
           break
         case 'ArrowLeft':
           velocity.current[0] += 0.1
+          targetRotation.current.y = Math.PI / 2
           break
         case 'ArrowRight':
           velocity.current[0] -= 0.1
+          targetRotation.current.y = -Math.PI / 2
           break
         default:
           break
@@ -44,11 +56,9 @@ function MovableObject({ collisionObjects = [] }) {
   }, [])
 
   return (
-    <>
-      <mesh ref={mesh} position={[0.5, 0, 0.5]}>
-        <Astro />
-      </mesh>
-    </>
+    <mesh ref={mesh} position={[0.5, 0, 0.5]}>
+      <Astro />
+    </mesh>
   )
 }
 
