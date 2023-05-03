@@ -1,24 +1,38 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import * as styles from '@styles/maze.module.css'
 
 import Experimental from '@components/Experimental'
 
+import { AppContext } from '@context/AppContext'
+import { testArr } from '@utils/parser'
+
 function Maze() {
+  const { width, height } = useContext(AppContext)
+
   // eslint-disable-next-line no-unused-vars
   const [mazeData, setMazeData] = useState(null)
 
-  /*
   useEffect(() => {
-    fetch('http://maze.uvgenios.online/?type=text&w=10&h=10')
-      .then((response) => response.text())
-      .then((data) => setMazeData(data))
-      .catch((error) => console.error(error))
+    /*
+    fetch(`https://maze.uvgenios.online/?type=json&w=${width}&h=${height}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMazeData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+    */
+    setMazeData(testArr)
   }, [])
-  */
 
   return (
     <div className={styles.container}>
-      {true ? <Experimental rawArr={mazeData} /> : <p>Loading maze data...</p>}
+      {mazeData ? (
+        <Experimental rawArr={mazeData} />
+      ) : (
+        <p>Loading maze data...</p>
+      )}
     </div>
   )
 }
