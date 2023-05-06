@@ -23,7 +23,7 @@ function Land() {
               <div>maze</div>
             </div>
             <Multiplier
-              text="abcdefg"
+              randomizer="abcdefg"
               cte={10}
               scale={0.27}
               min={10}

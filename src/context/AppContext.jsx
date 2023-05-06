@@ -10,6 +10,11 @@ export function AppProvider({ children }) {
   const [skin, setSkin] = useState('β')
   const [time, setTime] = useState(false)
   const [seconds, setSeconds] = useState(20)
+  const [position, setPosition] = useState({ x: 710, y: 20 })
+
+  function updatePosition(x, y) {
+    setPosition({ x, y })
+  }
 
   const globalHeight = (param) => {
     setHeight(param)
@@ -40,11 +45,13 @@ export function AppProvider({ children }) {
         skin,
         time,
         seconds,
+        position,
         globalHeight,
         globalWidth,
         globalSkin,
         globalTime,
         globalSeconds,
+        updatePosition,
       }}
     >
       {children}
