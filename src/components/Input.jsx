@@ -1,30 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as styles from '@styles/input.module.css'
 
-function Input({ header, min, max }) {
-  const [value, setValue] = useState('')
-
-  const handleInputChange = (e) => {
-    let newValue = e.target.value
-    if (newValue < min) {
-      newValue = 'min'
-    }
-    if (newValue > max) {
-      newValue = 'max'
-    }
-    setValue(newValue)
+function Input({ header, min, max, setFunction, variable }) {
+  const handleChange = (event) => {
+    setFunction(Number(event.target.value))
   }
 
   return (
     <div className={styles.container}>
       <label>
         {`${header}=`}
-        <input type="number" onChange={handleInputChange} />
+        <input
+          type="number"
+          value={variable || null}
+          onChange={handleChange}
+          disabled={false}
+        />
         <br />
-        {value === 'min' && `min=${min}`}
-        {value === 'max' && `max=${max}`}
+        {variable < min && `min=${min}`}
+        {variable > max && `max=${max}`}
       </label>
     </div>
   )
@@ -34,6 +30,8 @@ Input.propTypes = {
   header: PropTypes.string.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
+  setFunction: PropTypes.func.isRequired,
+  variable: PropTypes.number.isRequired,
 }
 
 export default Input

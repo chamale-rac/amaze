@@ -8,9 +8,10 @@ import Pill from './Pill'
 import Input from './Input'
 
 function Form() {
-  const { globalTime, time } = useContext(AppContext) // For time
+  const { globalTime, time } = useContext(AppContext) // For apply time
   const { globalHeight, globalWidth, width, height } = useContext(AppContext) // For width and height
-  const { skin, globalSkin } = useContext(AppContext) // For skin
+  const { globalSkin, skin } = useContext(AppContext) // For skin
+  const { seconds, globalSeconds } = useContext(AppContext) // For seconds
 
   return (
     <div className={styles.container}>
@@ -46,7 +47,15 @@ function Form() {
               onChange={(e) => globalTime(e.target.checked)}
             />
           </label>
-          {time && <Input header="secs" min={60} max={1000} />}
+          {time && (
+            <Input
+              header="secs"
+              min={60}
+              max={1000}
+              variable={seconds}
+              setFunction={globalSeconds}
+            />
+          )}
         </div>
       </div>
     </div>

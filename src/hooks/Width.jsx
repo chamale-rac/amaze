@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import * as styles from '@styles/land.module.css'
 
-function Width({ children, maxWidth = 992 }) {
+function Width({ children, maxWidth }) {
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
@@ -35,7 +35,11 @@ function Width({ children, maxWidth = 992 }) {
 
 Width.propTypes = {
   children: PropTypes.node.isRequired,
-  maxWidth: PropTypes.number.isRequired,
+  maxWidth: PropTypes.number,
+}
+
+Width.defaultProps = {
+  maxWidth: 992,
 }
 
 export default Width

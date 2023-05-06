@@ -25,7 +25,6 @@ export function AppProvider({ children }) {
   }
 
   const globalSkin = (param) => {
-    console.log('skin', param)
     setSkin(param)
   }
 
