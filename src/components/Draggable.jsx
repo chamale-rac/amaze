@@ -1,3 +1,4 @@
+// Final version: v1.0.0
 import React, { useRef, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { AppContext } from '@context/AppContext'
