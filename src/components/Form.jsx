@@ -10,6 +10,7 @@ import Input from './Input'
 function Form() {
   const { globalTime, time } = useContext(AppContext) // For time
   const { globalHeight, globalWidth, width, height } = useContext(AppContext) // For width and height
+  const { skin, globalSkin } = useContext(AppContext) // For skin
 
   return (
     <div className={styles.container}>
@@ -30,7 +31,12 @@ function Form() {
           header="Height"
         />
         <div>
-          <Pill header="skin" options={['β', 'Ψ', 'λ']} />
+          <Pill
+            header="skin"
+            options={['β', 'Ψ', 'λ']}
+            variable={skin}
+            setFunction={globalSkin}
+          />
           <label className={styles.label}>
             time?
             <input

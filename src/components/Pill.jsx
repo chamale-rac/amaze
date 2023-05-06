@@ -1,13 +1,10 @@
-import React, { useContext } from 'react'
+// Final version: v1.0.0
+import React from 'react'
 import PropTypes from 'prop-types'
-
-import { AppContext } from '@context/AppContext'
 
 import * as styles from '@styles/pill.module.css'
 
-function Pill({ header, options }) {
-  const { skin, globalSkin } = useContext(AppContext)
-
+function Pill({ header, options, variable, setFunction }) {
   return (
     <div className={styles.container}>
       <ul>
@@ -16,9 +13,9 @@ function Pill({ header, options }) {
           <ul>
             {options.map((option) => (
               <li
-                onClick={() => globalSkin(option)}
+                onClick={() => setFunction(option)}
                 className={`${styles.option} ${
-                  skin === option ? styles.selected : ''
+                  variable === option ? styles.selected : ''
                 }`}
               >
                 <span>{option}</span>
@@ -34,6 +31,8 @@ function Pill({ header, options }) {
 Pill.propTypes = {
   header: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  variable: PropTypes.string.isRequired,
+  setFunction: PropTypes.func.isRequired,
 }
 
 export default Pill
