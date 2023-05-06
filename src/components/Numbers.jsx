@@ -1,13 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-
-import { AppContext } from '@context/AppContext'
 
 import * as styles from '@styles/numbers.module.css'
 
-function Numbers({ min, max, header }) {
-  const { globalHeight, globalWidth, width, height } = useContext(AppContext)
-
+function Numbers({ min, max, setFunction, variable, header }) {
   const factorialArray = () => {
     const arr = []
 
@@ -19,10 +15,7 @@ function Numbers({ min, max, header }) {
   }
 
   const selected = (item) => {
-    if (header === 'Width') {
-      return width === item ? styles.selected : ''
-    }
-    return height === item ? styles.selected : ''
+    return variable === item ? styles.selected : ''
   }
 
   return (
@@ -34,11 +27,7 @@ function Numbers({ min, max, header }) {
             className={`${styles.number} ${selected(item)}`}
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              if (header === 'Width') {
-                globalWidth(item)
-              } else {
-                globalHeight(item)
-              }
+              setFunction(item)
             }}
           >
             {item}
@@ -47,9 +36,7 @@ function Numbers({ min, max, header }) {
       </div>
       <div className={styles.footer}>
         <div className={styles.arrows}>axy</div>
-        <div className={styles.actual}>
-          {header === 'Width' ? width : height}
-        </div>
+        <div className={styles.actual}>{variable}</div>
       </div>
     </div>
   )
@@ -59,6 +46,8 @@ Numbers.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   header: PropTypes.string.isRequired,
+  setFunction: PropTypes.func.isRequired,
+  variable: PropTypes.number.isRequired,
 }
 
 export default Numbers

@@ -20,11 +20,12 @@ function Draggable({ children }) {
       pos2 = pos4 - e.clientY
       pos3 = e.clientX
       pos4 = e.clientY
-      element.style.top = `${element.offsetTop - pos2}px`
-      element.style.left = `${element.offsetLeft - pos1}px`
 
       // Update the position in the context
-      updatePosition(element.offsetLeft - pos1, element.offsetTop - pos2)
+      updatePosition(
+        element.offsetLeft - pos1,
+        window.innerHeight - (element.offsetTop + element.offsetHeight) + pos2,
+      )
     }
 
     function closeDragElement() {

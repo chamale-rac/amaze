@@ -8,14 +8,27 @@ import Pill from './Pill'
 import Input from './Input'
 
 function Form() {
-  const { globalTime, time } = useContext(AppContext)
+  const { globalTime, time } = useContext(AppContext) // For time
+  const { globalHeight, globalWidth, width, height } = useContext(AppContext) // For width and height
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>Configs</div>
       <div className={styles.wrapper}>
-        <Numbers min={4} max={10} header="Width" />
-        <Numbers min={4} max={10} header="Height" />
+        <Numbers
+          min={4}
+          max={10}
+          setFunction={globalWidth}
+          variable={width}
+          header="Width"
+        />
+        <Numbers
+          min={4}
+          max={10}
+          setFunction={globalHeight}
+          variable={height}
+          header="Height"
+        />
         <div>
           <Pill header="skin" options={['β', 'Ψ', 'λ']} />
           <label className={styles.label}>
