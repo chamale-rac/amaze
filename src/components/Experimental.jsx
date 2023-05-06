@@ -91,7 +91,11 @@ function Experimental({ rawArr }) {
       {mappedObjects ? (
         <Canvas>
           <ambientLight intensity={0.06} />
-          <pointLight castShadow position={[10, 10, 10]} color={0xbd58e8} />
+          <pointLight
+            castShadow
+            position={[10, 10, 10]}
+            color={parseInt('0xbd58e8', 16)}
+          />
           <PerspectiveCamera
             makeDefault
             position={[-12, 12, -12]}

@@ -34,7 +34,7 @@ function Form() {
         <div>
           <Pill
             header="skin"
-            options={['β', 'Ψ', 'λ']}
+            options={['0xbd58e8', '0x80ebc4', '0x264ecc']}
             variable={skin}
             setFunction={globalSkin}
           />
