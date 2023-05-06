@@ -14,25 +14,7 @@ export const rawArrToMappable = (arr) => {
   const mappedArr = []
   arr.forEach((row, rowIdx) => {
     row.forEach((col, colIdx) => {
-      if (col === '+') {
-        mappedArr.push({
-          type: 'column',
-          x: colIdx,
-          z: rowIdx,
-        })
-      } else if (col === '-') {
-        mappedArr.push({
-          type: 'horizontal',
-          x: colIdx,
-          z: rowIdx,
-        })
-      } else if (col === '|') {
-        mappedArr.push({
-          type: 'vertical',
-          x: colIdx,
-          z: rowIdx,
-        })
-      } else if (col === ' ') {
+      if (col === ' ') {
         mappedArr.push({
           type: 'space',
           x: colIdx,

@@ -1,5 +1,4 @@
-import Column from './Column'
-import HorizontalWall from './HorizontalWall'
-import VerticalWall from './VerticalWall'
+import Space from './Space'
+import Goal from './Goal'
 
-export { Column, HorizontalWall, VerticalWall }
+export { Space, Goal }

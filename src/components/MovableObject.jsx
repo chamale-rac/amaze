@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 // import Astro from './Astro'
 
 // eslint-disable-next-line no-unused-vars
-function MovableObject({ collisionObjects = [] }) {
+function MovableObject({ collisionObjects = [], initialPosition = [1, 2] }) {
   const isMoving = useRef(false)
   const group = useRef()
   const { nodes, materials, animations } = useGLTF(
@@ -29,6 +29,14 @@ function MovableObject({ collisionObjects = [] }) {
   }
 
   const mesh = useRef()
+
+  useEffect(() => {
+    // eslint-disable-next-line prefer-destructuring
+    mesh.current.position.x = initialPosition[0]
+    // eslint-disable-next-line prefer-destructuring
+    mesh.current.position.z = initialPosition[1]
+  }, [])
+
   const velocity = useRef([0, 0])
 
   const targetRotation = useRef({ x: 0, y: 0, z: 0 })

@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-unknown-property */
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { Canvas } from '@react-three/fiber'
@@ -10,16 +11,18 @@ import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import { rawArrToMappable } from '@utils/parser'
 
 import * as styles from '@styles/experimental.module.css'
-import { Column, HorizontalWall, VerticalWall } from '@components/MazeObjects'
+import { Space, Goal } from '@components/MazeObjects'
 
-import MovableObject from './MovableObject'
 import { AppContext } from '@context/AppContext'
+import MovableObject from './MovableObject'
 
 // eslint-disable-next-line no-unused-vars
 function Experimental({ rawArr }) {
   const { width, height } = useContext(AppContext)
   // eslint-disable-next-line no-unused-vars
   const [mappedObjects, setMappedObjects] = useState()
+  const playerPosition = useRef([0, 0])
+  const goalPosition = useRef([0, 0])
 
   useEffect(() => {
     setMappedObjects(rawArrToMappable(rawArr))
@@ -34,8 +37,17 @@ function Experimental({ rawArr }) {
 
   // eslint-disable-next-line consistent-return
   const transformObject = (type, idx, x, z) => {
-    if (type === 'column') {
-      return <Column key={idx} x={x - height / 2} z={z - width / 2} />
+    if (type === 'space') {
+      return <Space key={idx} x={x - height - height / 2} z={z - width} />
+    }
+    if (type === 'player') {
+      playerPosition.current = [x - height - height / 2 + 0.5, z - width + 0.5]
+      console.log(playerPosition.current)
+      return <Space key={idx} x={x - height - height / 2} z={z - width} />
+    }
+    if (type === 'goal') {
+      goalPosition.current = [x - height - height / 2 + 0.5, z - width + 0.5]
+      return <Space key={idx} x={x - height - height / 2} z={z - width} />
     }
   }
 
@@ -59,16 +71,22 @@ function Experimental({ rawArr }) {
             far={1000}
           />
           <OrbitControls />
-          <gridHelper args={[height, width]} />
 
-          <MovableObject collisionObjects={collisionObjects} />
           {/*
+          <gridHelper args={[height, width]} />
            */}
-          {/**
-            
+          <gridHelper args={[20, 20]} />
+          <MovableObject
+            collisionObjects={collisionObjects}
+            initialPosition={playerPosition.current}
+          />
+          <Goal initialPosition={goalPosition.current} />
+
           {mappedObjects.map((obj, idx) =>
             transformObject(obj.type, idx, obj.x, obj.z),
           )}
+          {/**
+            
              */}
         </Canvas>
       ) : (
