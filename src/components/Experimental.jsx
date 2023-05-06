@@ -23,6 +23,7 @@ function Experimental({ rawArr }) {
   const [mappedObjects, setMappedObjects] = useState()
   const playerPosition = useRef([0, 0])
   const goalPosition = useRef([0, 0])
+  const collisionObjects = useRef([])
 
   useEffect(() => {
     setMappedObjects(rawArrToMappable(rawArr))
@@ -38,31 +39,59 @@ function Experimental({ rawArr }) {
   // eslint-disable-next-line consistent-return
   const transformObject = (type, idx, x, z) => {
     if (type === 'space') {
-      return <Space key={idx} x={x - height - height / 2} z={z - width} />
+      collisionObjects.current.push([
+        x - height - height / 2 + 0.5,
+        z - width + 0.5,
+        'space',
+      ])
+      return (
+        <Space
+          key={idx}
+          x={x - height - height / 2 + 0.5}
+          z={z - width + 0.5}
+        />
+      )
     }
     if (type === 'player') {
+      collisionObjects.current.push([
+        x - height - height / 2 + 0.5,
+        z - width + 0.5,
+        'player',
+      ])
       playerPosition.current = [x - height - height / 2 + 0.5, z - width + 0.5]
-      console.log(playerPosition.current)
-      return <Space key={idx} x={x - height - height / 2} z={z - width} />
+      return (
+        <Space
+          key={idx}
+          x={x - height - height / 2 + 0.5}
+          z={z - width + 0.5}
+        />
+      )
     }
     if (type === 'goal') {
+      collisionObjects.current.push([
+        x - height - height / 2 + 0.5,
+        z - width + 0.5,
+        'goal',
+      ])
       goalPosition.current = [x - height - height / 2 + 0.5, z - width + 0.5]
-      return <Space key={idx} x={x - height - height / 2} z={z - width} />
+      return (
+        <Space
+          key={idx}
+          x={x - height - height / 2 + 0.5}
+          z={z - width + 0.5}
+        />
+      )
     }
   }
 
   // eslint-disable-next-line no-unused-vars
-  const collisionObjects = [
-    { x: 5, z: -5, type: 'column' },
-    { x: 5, z: -4, type: 'column' },
-  ]
 
   return (
     <div className={styles.container}>
       {mappedObjects ? (
         <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight castShadow position={[10, 10, 10]} />
+          <ambientLight intensity={0.06} />
+          <pointLight castShadow position={[10, 10, 10]} color={0xbd58e8} />
           <PerspectiveCamera
             makeDefault
             position={[-12, 12, -12]}
@@ -75,10 +104,10 @@ function Experimental({ rawArr }) {
           {/*
           <gridHelper args={[height, width]} />
            */}
-          <gridHelper args={[20, 20]} />
           <MovableObject
-            collisionObjects={collisionObjects}
+            collisionObjects={collisionObjects.current}
             initialPosition={playerPosition.current}
+            goalPosition={goalPosition.current}
           />
           <Goal initialPosition={goalPosition.current} />
 

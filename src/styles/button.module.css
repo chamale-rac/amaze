@@ -1,39 +1,38 @@
 .container {
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
 }
 
 .container .button {
-    color: black;
-    text-decoration: none;
-    position: absolute;
-    font-family: 'Pixel Gaming', sans-serif;
-    font-size: 67px;
-    transform-origin: 100% 100%;
-    transform: rotate(-95deg);
-    border-style: none;
-    transition: background-color 70ms ease-in-out,
-        color 70ms ease-out;
+  color: black;
+  text-decoration: none;
+  position: absolute;
+  font-family: 'Pixel Gaming', sans-serif;
+  font-size: 67px;
+  transform-origin: 100% 100%;
+  transform: rotate(-95deg);
+  border-style: none;
+  transition: background-color 70ms ease-in-out, color 70ms ease-out;
 }
 
 .container .button::after {
-    content: 'the game';
+  content: 'the game';
 }
 
 .container .button::before {
-    content: 'Play';
+  content: 'Play';
 }
 
 .container .button:hover {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .container .button:hover::after {
-    content: 'play';
+  content: 'play';
 }
 
 .container .button:hover::before {
-    content: 'The game';
+  content: 'The game';
 }

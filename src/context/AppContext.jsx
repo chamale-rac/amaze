@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 export const AppContext = createContext()
 
 export function AppProvider({ children }) {
-  const [height, setHeight] = useState(4)
-  const [width, setWidth] = useState(4)
+  const [height, setHeight] = useState(5)
+  const [width, setWidth] = useState(5)
   const [skin, setSkin] = useState('β')
   const [time, setTime] = useState(false)
   const [seconds, setSeconds] = useState(20)

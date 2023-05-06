@@ -45,37 +45,37 @@ font-family: 'El Glance', sans-serif;
 */
 
 body {
-    overflow-y: hidden;
-    overflow-x: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    border-style: dashed dashed dashed dashed;
-    border-width: 1px;
-    border-color: black;
+  box-sizing: border-box;
+  margin: 0;
+  border-style: dashed dashed dashed dashed;
+  border-width: 1px;
+  border-color: black;
 }
 
 /* Color Theme Swatches in Hex */
 .violet-feathers-1-hex {
-    color: #8D41BF;
+  color: #8d41bf;
 }
 
 .violet-feathers-2-hex {
-    color: #67308C;
+  color: #67308c;
 }
 
 .violet-feathers-3-hex {
-    color: #421E59;
+  color: #421e59;
 }
 
 .violet-feathers-4-hex {
-    color: #1C0D26;
+  color: #1c0d26;
 }
 
 .violet-feathers-5-hex {
-    color: #C09CD9;
+  color: #c09cd9;
 }

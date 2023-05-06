@@ -4,8 +4,8 @@ import React from 'react'
 
 function Space({ x, z }) {
   return (
-    <mesh position={[x + 0.5, -0.5, z + 0.5]}>
-      <boxBufferGeometry args={[1, 1, 1]} />
+    <mesh position={[x, -0.25, z]}>
+      <boxBufferGeometry args={[1, 0.5, 1]} />
       <meshNormalMaterial />
     </mesh>
   )

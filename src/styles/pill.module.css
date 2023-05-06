@@ -1,23 +1,22 @@
 .container {
-    font-family: 'BLACKING', sans-serif;
+  font-family: 'BLACKING', sans-serif;
 }
 
-
 .container span {
-    font-size: 20px;
-    font-family: 'El Glance', sans-serif;
+  font-size: 20px;
+  font-family: 'El Glance', sans-serif;
 }
 
 .header {
-    user-select: none;
+  user-select: none;
 }
 
 .option {
-    user-select: none;
-    cursor: pointer;
+  user-select: none;
+  cursor: pointer;
 }
 
 .selected {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }

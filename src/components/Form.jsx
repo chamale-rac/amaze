@@ -14,8 +14,8 @@ function Form() {
     <div className={styles.container}>
       <div className={styles.title}>Configs</div>
       <div className={styles.wrapper}>
-        <Numbers min={4} max={100} header="Width" />
-        <Numbers min={4} max={100} header="Height" />
+        <Numbers min={4} max={10} header="Width" />
+        <Numbers min={4} max={10} header="Height" />
         <div>
           <Pill header="skin" options={['β', 'Ψ', 'λ']} />
           <label className={styles.label}>
@@ -27,7 +27,7 @@ function Form() {
               onChange={(e) => globalTime(e.target.checked)}
             />
           </label>
-          {time && <Input header="secs" />}
+          {time && <Input header="secs" min={60} max={1000} />}
         </div>
       </div>
     </div>

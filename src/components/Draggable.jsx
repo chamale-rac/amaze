@@ -44,8 +44,8 @@ function Draggable({ children }) {
     <div
       ref={elementRef}
       style={{
-        top: '330px',
-        left: '810px',
+        bottom: '20px',
+        left: '710px',
         cursor: 'move',
         position: 'absolute',
         width: '500px',
@@ -54,7 +54,7 @@ function Draggable({ children }) {
         userSelect: 'none',
       }}
     >
-      <span>drag ↓◙</span>
+      <span>drag ↑◙</span>
       {children}
     </div>
   )

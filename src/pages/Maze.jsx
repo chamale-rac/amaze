@@ -14,15 +14,17 @@ function Maze() {
 
   useEffect(() => {
     /*
-    fetch(`https://maze.uvgenios.online/?type=json&w=${width}&h=${height}`)
+      fetch(`https://maze.uvgenios.online/?type=json&w=${width}&h=${height}`)
       .then((response) => response.json())
       .then((data) => {
         setMazeData(data)
       })
       .catch((error) => {
         console.error('Error fetching data:', error)
-      })
-    */
+      }) */
+    /*
+    setMazeData(testArr) */
+
     setMazeData(testArr)
   }, [])
 
