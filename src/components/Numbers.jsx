@@ -1,3 +1,4 @@
+// Final version: v1.0.0
 import React from 'react'
 import PropTypes from 'prop-types'
 
