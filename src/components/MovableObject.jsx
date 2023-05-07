@@ -11,6 +11,7 @@ function MovableObject({
   winFunction,
   looseFunction,
   restartFunction,
+  timeLeft,
 }) {
   const hasIncreasedSpeed = useRef(false)
   const isMoving = useRef(false)
@@ -34,6 +35,15 @@ function MovableObject({
   }
 
   const mesh = useRef()
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      fadeToAction(actions.Idling, actions.Running, 0.4)
+      isMoving.current = false
+      hasLoose.current = true
+      looseFunction(true)
+    }
+  }, [timeLeft])
 
   useEffect(() => {
     // eslint-disable-next-line prefer-destructuring
@@ -133,7 +143,7 @@ function MovableObject({
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      const add = hasIncreasedSpeed.current ? 0.04 : 0.02
+      const add = hasIncreasedSpeed.current ? 0.08 : 0.02
       if (!hasLoose.current) {
         switch (event.key) {
           case 'w':
@@ -180,7 +190,7 @@ function MovableObject({
           mesh.current.rotation.y = 0
           mesh.current.rotation.x = 0
           mesh.current.position.y = 0
-
+          hasIncreasedSpeed.current = false
           hasLoose.current = false
           firstMove.current = true
           isMoving.current = false

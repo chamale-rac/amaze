@@ -12,7 +12,13 @@ import { Space, Goal } from '@components/MazeObjects'
 import { AppContext } from '@context/AppContext'
 import MovableObject from './MovableObject'
 
-function Experimental({ rawArr, winFunction, looseFunction, restartFunction }) {
+function Experimental({
+  rawArr,
+  winFunction,
+  looseFunction,
+  restartFunction,
+  timeLeft,
+}) {
   const { width, height, skin } = useContext(AppContext)
   const [mappedObjects, setMappedObjects] = useState()
   const playerPosition = useRef([0, 0])
@@ -89,6 +95,7 @@ function Experimental({ rawArr, winFunction, looseFunction, restartFunction }) {
             collisionObjects={collisionObjects.current}
             initialPosition={playerPosition.current}
             goalPosition={goalPosition.current}
+            timeLeft={timeLeft}
           />
           <Goal initialPosition={goalPosition.current} />
           {mappedObjects.map((obj, idx) =>
@@ -107,6 +114,7 @@ Experimental.propTypes = {
   winFunction: PropTypes.func.isRequired,
   looseFunction: PropTypes.func.isRequired,
   restartFunction: PropTypes.func.isRequired,
+  timeLeft: PropTypes.number.isRequired,
 }
 
 export default Experimental

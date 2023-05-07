@@ -114,6 +114,7 @@ function Maze() {
             winFunction={setWon}
             looseFunction={setLoose}
             restartFunction={handleRestart}
+            timeLeft={timeLeft}
           />
         ) : (
           <div className={styles.prompt_real}>Loading maze...</div>

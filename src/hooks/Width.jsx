@@ -21,7 +21,7 @@ function Width({ children, maxWidth, maxHeight }) {
     <div className={styles.container}>
       <div className={styles.col}>
         <div className={styles.wrapper}>
-          This game is not available on small devices.
+          This game is not available on mobile devices.
           <div className={styles.title}>
             <div>m</div>
             <div>a</div>
