@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Input from '@components/Input'
 
 export default {

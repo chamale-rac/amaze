@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Numbers from '@components/Numbers'
 
 export default {

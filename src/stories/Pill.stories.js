@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Pill from '@components/Pill'
 
 export default {
