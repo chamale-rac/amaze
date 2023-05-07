@@ -25,15 +25,12 @@ function Experimental({
   const goalPosition = useRef([0, 0])
   const collisionObjects = useRef([])
 
-  useEffect(() => {
-    setMappedObjects(rawArrToMappable(rawArr))
-  }, [])
-
   // Chat gpt fix it
   const addToCollisionObjects = (type, x, z) => {
     const obj = [x - height - height / 2 + 0.5, z - width + 0.5, type]
     collisionObjects.current.push(obj)
     if (type === 'player') {
+      console.log('player')
       playerPosition.current = obj.slice(0, 2)
     }
     if (type === 'goal') {
@@ -54,6 +51,13 @@ function Experimental({
     }
     return null
   }
+
+  useEffect(() => {
+    const transformedObjects = rawArrToMappable(rawArr).map((obj, idx) =>
+      transformObject(obj.type, idx, obj.x, obj.z),
+    )
+    setMappedObjects(transformedObjects)
+  }, [])
 
   const intensityPoint = 2
   return (
@@ -98,9 +102,7 @@ function Experimental({
             timeLeft={timeLeft}
           />
           <Goal initialPosition={goalPosition.current} />
-          {mappedObjects.map((obj, idx) =>
-            transformObject(obj.type, idx, obj.x, obj.z),
-          )}
+          {mappedObjects}
         </Canvas>
       ) : (
         <p>Loading maze data...</p>
