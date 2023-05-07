@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 import * as styles from '@styles/input.module.css'
 
 function Input({ header, min, max, setFunction, variable }) {
+  const [internalVariable, setInternalVariable] = React.useState(variable)
   const handleChange = (event) => {
     setFunction(Number(event.target.value))
+    setInternalVariable(Number(event.target.value))
   }
 
   return (
@@ -19,8 +21,8 @@ function Input({ header, min, max, setFunction, variable }) {
           disabled={false}
         />
         <br />
-        {variable < min && `min=${min}`}
-        {variable > max && `max=${max}`}
+        {internalVariable < min && `min=${min}`}
+        {internalVariable > max && `max=${max}`}
       </label>
     </div>
   )

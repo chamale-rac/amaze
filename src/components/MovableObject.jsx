@@ -58,9 +58,7 @@ function MovableObject({
 
       if (distanceSquared < radius * radius) {
         // player is inside this square
-        console.log('is inside square')
         if (squares[i][2] === 'goal') {
-          console.log('is inside goal')
           fadeToAction(actions.Idling, actions.Running, 0.2)
           setTimeout(() => {
             isMoving.current = false
@@ -87,7 +85,6 @@ function MovableObject({
       hasLoose.current = true
       looseFunction(true)
     }, 50)
-    console.log('is not inside any square')
     return -1
   }
   // Smoothly update the rotation of the mesh

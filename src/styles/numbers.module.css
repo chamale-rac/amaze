@@ -1,3 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/nature-boho');
+
+@import url('https://fonts.cdnfonts.com/css/groothe');
+
+@import url('https://fonts.cdnfonts.com/css/el-glance');
+
 .container {
   display: flex;
   flex-direction: column;

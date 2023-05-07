@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import * as styles from '@styles/numbers.module.css'
 
 function Numbers({ min, max, setFunction, variable, header }) {
+  const [internalVariable, setInternalVariable] = React.useState(variable)
+
   const factorialArray = () => {
     const arr = []
 
@@ -15,8 +17,13 @@ function Numbers({ min, max, setFunction, variable, header }) {
     return arr
   }
 
+  const handleChange = (option) => {
+    setFunction(option)
+    setInternalVariable(option)
+  }
+
   const selected = (item) => {
-    return variable === item ? styles.selected : ''
+    return internalVariable === item ? styles.selected : ''
   }
 
   return (
@@ -28,7 +35,7 @@ function Numbers({ min, max, setFunction, variable, header }) {
             className={`${styles.number} ${selected(item)}`}
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              setFunction(item)
+              handleChange(item)
             }}
           >
             {item}
@@ -37,7 +44,7 @@ function Numbers({ min, max, setFunction, variable, header }) {
       </div>
       <div className={styles.footer}>
         <div className={styles.arrows}>axy</div>
-        <div className={styles.actual}>{variable}</div>
+        <div className={styles.actual}>{internalVariable}</div>
       </div>
     </div>
   )

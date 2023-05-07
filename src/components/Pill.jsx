@@ -5,6 +5,13 @@ import PropTypes from 'prop-types'
 import * as styles from '@styles/pill.module.css'
 
 function Pill({ header, options, variable, setFunction }) {
+  const [internalVariable, setInternalVariable] = React.useState(variable)
+
+  const handleChange = (option) => {
+    setFunction(option)
+    setInternalVariable(option)
+  }
+
   return (
     <div className={styles.container}>
       <ul>
@@ -13,9 +20,9 @@ function Pill({ header, options, variable, setFunction }) {
           <ul>
             {options.map((option) => (
               <li
-                onClick={() => setFunction(option)}
+                onClick={() => handleChange(option)}
                 className={`${styles.option} ${
-                  variable === option ? styles.selected : ''
+                  internalVariable === option ? styles.selected : ''
                 }`}
               >
                 <span>{option}</span>

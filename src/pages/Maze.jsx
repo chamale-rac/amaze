@@ -63,9 +63,8 @@ function Maze() {
       .then((data) => {
         setMazeData(data)
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-      })
+      // eslint-disable-next-line no-unused-vars
+      .catch((error) => {})
   }
 
   useEffect(() => {
