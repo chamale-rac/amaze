@@ -13,7 +13,7 @@ function Goal({ initialPosition }) {
 
   return (
     <mesh ref={mesh} position={[initialPosition[0], 0.5, initialPosition[1]]}>
-      <torusKnotBufferGeometry args={[0.2, 0.1, 65, 8]} />
+      <torusKnotBufferGeometry args={[0.2, 0.1, 90, 8]} />
       <meshNormalMaterial />
     </mesh>
   )

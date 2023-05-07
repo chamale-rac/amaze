@@ -49,7 +49,7 @@ function Form() {
           </label>
           {time && (
             <Input
-              header="secs"
+              header="sec"
               min={60}
               max={1000}
               variable={seconds}

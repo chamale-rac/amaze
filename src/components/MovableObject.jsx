@@ -1,13 +1,17 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/prop-types */
+/* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import React, { useRef, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
-// import Astro from './Astro'
 
-// eslint-disable-next-line no-unused-vars
-function MovableObject({ collisionObjects, initialPosition = [1, 2] }) {
+function MovableObject({
+  collisionObjects,
+  initialPosition = [1, 2],
+  winFunction,
+  looseFunction,
+  restartFunction,
+}) {
   const hasIncreasedSpeed = useRef(false)
   const isMoving = useRef(false)
   const hasLoose = useRef(false)
@@ -60,8 +64,15 @@ function MovableObject({ collisionObjects, initialPosition = [1, 2] }) {
           fadeToAction(actions.Idling, actions.Running, 0.2)
           setTimeout(() => {
             isMoving.current = false
-            // won function
+            if (dx < dz) {
+              mesh.current.position.x -= 1
+            } else {
+              mesh.current.position.z -= 1
+            }
           }, 50)
+          setTimeout(() => {
+            winFunction(true)
+          }, 200)
           return i
         }
         return i
@@ -74,6 +85,7 @@ function MovableObject({ collisionObjects, initialPosition = [1, 2] }) {
     setTimeout(() => {
       isMoving.current = false
       hasLoose.current = true
+      looseFunction(true)
     }, 50)
     console.log('is not inside any square')
     return -1
@@ -127,39 +139,58 @@ function MovableObject({ collisionObjects, initialPosition = [1, 2] }) {
       const add = hasIncreasedSpeed.current ? 0.04 : 0.02
       if (!hasLoose.current) {
         switch (event.key) {
-          case 'ArrowUp':
+          case 'w':
             velocity.current[1] = add
             velocity.current[0] = 0
             targetRotation.current.y = 0
             handleMove()
             break
-          case 'ArrowDown':
+          case 's':
             velocity.current[1] = -add
             velocity.current[0] = 0
             targetRotation.current.y = Math.PI
 
             handleMove()
             break
-          case 'ArrowLeft':
+          case 'a':
             velocity.current[0] = add
             velocity.current[1] = 0
             targetRotation.current.y = Math.PI / 2
 
             handleMove()
             break
-          case 'ArrowRight':
+          case 'd':
             velocity.current[0] = -add
             velocity.current[1] = 0
             targetRotation.current.y = -Math.PI / 2
             handleMove()
             break
-          case ' ':
+          case 'q':
             hasIncreasedSpeed.current = !hasIncreasedSpeed.current
             break
 
           default:
             break
         }
+      }
+
+      switch (event.key) {
+        case 'r':
+          actions.Running.stop()
+          restartFunction()
+          mesh.current.position.x = initialPosition[0]
+          mesh.current.position.z = initialPosition[1]
+          mesh.current.rotation.y = 0
+          mesh.current.rotation.x = 0
+          mesh.current.position.y = 0
+
+          hasLoose.current = false
+          firstMove.current = true
+          isMoving.current = false
+          fadeToAction(actions.Idling, actions.Running, 0.2)
+          break
+        default:
+          break
       }
     }
     window.addEventListener('keydown', handleKeyDown)
@@ -177,8 +208,14 @@ function MovableObject({ collisionObjects, initialPosition = [1, 2] }) {
               geometry={nodes.Astronaut.geometry}
               material={materials.Astronaut}
               skeleton={nodes.Astronaut.skeleton}
-            />
-            <meshNormalMaterial />
+            >
+              <meshPhysicalMaterial
+                roughness={0}
+                metalness={0}
+                reflectivity={1}
+                clearcoat={0.5}
+              />
+            </skinnedMesh>
           </group>
         </group>
       </group>

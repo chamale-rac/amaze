@@ -12,7 +12,7 @@ import { Space, Goal } from '@components/MazeObjects'
 import { AppContext } from '@context/AppContext'
 import MovableObject from './MovableObject'
 
-function Experimental({ rawArr }) {
+function Experimental({ rawArr, winFunction, looseFunction, restartFunction }) {
   const { width, height, skin } = useContext(AppContext)
   const [mappedObjects, setMappedObjects] = useState()
   const playerPosition = useRef([0, 0])
@@ -49,31 +49,48 @@ function Experimental({ rawArr }) {
     return null
   }
 
+  const intensityPoint = 2
   return (
     <div className={styles.container}>
       {mappedObjects ? (
         <Canvas>
-          <ambientLight intensity={0.06} />
+          <ambientLight intensity={1} color={0x000000} />
           <pointLight
             castShadow
-            position={[10, 10, 10]}
+            position={[0, 100, 40]}
             color={parseInt(skin, 16)}
+            intensity={intensityPoint}
+          />
+          <pointLight
+            castShadow
+            position={[0, 100, 0]}
+            color={parseInt(skin, 16)}
+            intensity={intensityPoint}
+          />
+
+          <pointLight
+            castShadow
+            position={[0, 100, -40]}
+            color={parseInt(skin, 16)}
+            intensity={intensityPoint}
           />
           <PerspectiveCamera
             makeDefault
-            position={[-12, 12, -12]}
+            position={[-12, 12, -22]}
             fov={45}
             near={0.1}
             far={1000}
           />
           <OrbitControls />
           <MovableObject
+            winFunction={winFunction}
+            looseFunction={looseFunction}
+            restartFunction={restartFunction}
             collisionObjects={collisionObjects.current}
             initialPosition={playerPosition.current}
             goalPosition={goalPosition.current}
           />
           <Goal initialPosition={goalPosition.current} />
-
           {mappedObjects.map((obj, idx) =>
             transformObject(obj.type, idx, obj.x, obj.z),
           )}
@@ -87,6 +104,9 @@ function Experimental({ rawArr }) {
 
 Experimental.propTypes = {
   rawArr: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  winFunction: PropTypes.func.isRequired,
+  looseFunction: PropTypes.func.isRequired,
+  restartFunction: PropTypes.func.isRequired,
 }
 
 export default Experimental
