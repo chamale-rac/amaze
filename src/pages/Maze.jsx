@@ -7,9 +7,9 @@ import { AppContext } from '@context/AppContext'
 import { testArr } from '@utils/parser'
 
 function Maze() {
+  // eslint-disable-next-line no-unused-vars
   const { width, height } = useContext(AppContext)
 
-  // eslint-disable-next-line no-unused-vars
   const [mazeData, setMazeData] = useState(null)
 
   useEffect(() => {

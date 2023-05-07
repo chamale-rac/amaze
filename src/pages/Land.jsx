@@ -33,7 +33,7 @@ function Land() {
         </div>
         <div className={styles.col}>
           <Draggable>
-            <Button to="/play" />
+            <Button to="/experimental" />
           </Draggable>
         </div>
         <div className={styles.col}>

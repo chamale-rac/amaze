@@ -7,7 +7,7 @@ export const AppContext = createContext()
 export function AppProvider({ children }) {
   const [height, setHeight] = useState(5)
   const [width, setWidth] = useState(5)
-  const [skin, setSkin] = useState('β')
+  const [skin, setSkin] = useState('0xbd58e8')
   const [time, setTime] = useState(false)
   const [seconds, setSeconds] = useState(20)
   const [position, setPosition] = useState({ x: 710, y: 20 })
